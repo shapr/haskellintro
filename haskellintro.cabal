@@ -1,0 +1,83 @@
+cabal-version: 2.4
+name:          haskellintro
+version:       0.0.0.0
+
+-- synopsis:       $synopsis
+-- description:    $description
+-- category:       $category
+-- homepage:       $gitrepo#readme
+-- bug-reports:    $gitrepo/issues
+-- maintainer:     $maintainer
+build-type:    Simple
+
+source-repository head
+  type:     git
+  location: git@github.com:shapr/haskellintro.git
+
+common common-opts
+  default-extensions:
+    GADTs
+    ImportQualifiedPost
+    InstanceSigs
+    LambdaCase
+    MultiWayIf
+    NamedFieldPuns
+    OverloadedStrings
+    RecordWildCards
+    ScopedTypeVariables
+    StrictData
+    TupleSections
+    TypeApplications
+
+  ghc-options:        -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+    , base
+    , containers
+    , foldl
+    , text
+
+  -- Codecs
+  -- , aeson
+  -- , deriving-aeson
+  -- , binary
+
+  -- Parallelism
+  -- , async
+
+  -- Mutability
+  -- , primitive
+
+  -- Binary
+  -- , bytestring
+  -- , vector
+
+  -- Containers
+  -- , unordered-containers
+
+  -- Utilities
+  -- , safe-exceptions
+
+  default-language:   Haskell2010
+
+library
+  import:          common-opts
+  exposed-modules: Core
+  hs-source-dirs:  src
+
+executable haskellintro
+  import:          common-opts
+  main-is:         Main.hs
+  exposed-modules: Main
+  hs-source-dirs:  app
+  build-depends:   haskellintro
+
+test-suite test
+  import:         common-opts
+  type:           exitcode-stdio-1.0
+  main-is:        Main.hs
+  hs-source-dirs: test
+  build-depends:
+    , haskellintro
+    , hspec
+    , hspec-expectations
+    , QuickCheck
