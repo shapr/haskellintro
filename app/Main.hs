@@ -1,6 +1,8 @@
 module Main where
 
-import Prelude
+import Core
 
 main :: IO ()
-main = putStrLn "hello world"
+main = do
+    putStrLn "hello world"
+    print $ mylength "hello world"

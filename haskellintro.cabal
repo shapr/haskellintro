@@ -25,7 +25,6 @@ common common-opts
     OverloadedStrings
     RecordWildCards
     ScopedTypeVariables
-    StrictData
     TupleSections
     TypeApplications
 
@@ -34,6 +33,7 @@ common common-opts
     , base
     , containers
     , foldl
+    , megaparsec
     , text
 
   -- Codecs
@@ -78,6 +78,8 @@ test-suite test
   hs-source-dirs: test
   build-depends:
     , haskellintro
+    , hedgehog
     , hspec
     , hspec-expectations
+    , hspec-hedgehog
     , QuickCheck
